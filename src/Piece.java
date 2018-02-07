@@ -35,7 +35,24 @@ public class Piece {
         return loc;
     }
 
-    public boolean moveable(ChessBoard b, int[] dest) {
+    public void dead() {
+        this.player = -1;
+        this.loc = null;
+        this.id = -1;
+        this.name = null;
+    }
+    public boolean promote() {
+        return false;
+    }
+    public boolean moveable(Game g, int[] dest) {
+        return false;
+    }
+
+    public boolean pieceRule(int[] dest, int row, int col) {
+        return false;
+    }
+
+    public boolean capture(Game g, int[] dest) {
         return false;
     }
 

@@ -17,7 +17,7 @@ public class Player {
         return this.cp;
     }
 
-    public void move(int id, int[] loc) {
-        cp.movePiece(id, loc);
+    public int getPlayer() {
+        return this.player;
     }
 }
