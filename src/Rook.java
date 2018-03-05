@@ -1,12 +1,17 @@
 
 public class Rook extends Piece {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
     public Rook(int player, int[] loc, int id) {
         super(player, loc, id);
-        // TODO Auto-generated constructor stub
     }
 
     public String getName() {
-        return player == 0 ? "\u2656" : "\u265C";
+        return  "\u265C";
     }
 
     public boolean getPath(Game g, int[] dest) {
@@ -18,20 +23,21 @@ public class Rook extends Piece {
     }
 
     public boolean moveable(Game g, int[] dest) {
-        boolean res = false;
-        if (pieceRule(dest)) {
-            if (getPath(g, dest)) {
-                res = true;
-            }
-        } else {
-            res = false;
+        if (g.getBoard().getSquare(dest).getPiece() != null) {
+            return false;
         }
-        return res;
+        if (pieceRule(dest) && getPath(g, dest)) {
+            return true;
+        }
+        return false;
     }
 
     public boolean capture(Game g, int[] dest) {
-        int opp = g.getBoard().getSquare(dest).getPiece().getPlayer();
-        if (moveable(g, dest) && player != opp) {
+        Piece opp = g.getBoard().getSquare(dest).getPiece();
+        if (opp == null) {
+            return false;
+        }
+        if (pieceRule(dest) && getPath(g, dest) && player != opp.player) {
             return true;
         }
         return false;

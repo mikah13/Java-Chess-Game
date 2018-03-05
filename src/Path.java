@@ -25,15 +25,15 @@ public class Path {
                     return false;
                 }
             }
-
         }
         return true;
     }
 
+    // Check the diagonal path by checking every diagonal square between the
+    // location and the destination if one of them is not null then returns false
     public static boolean checkDiag(ChessBoard b, int[] loc, int[] dest) {
         int rowDif = dest[0] - loc[0];
         int colDif = dest[1] - loc[1];
-
         if ((rowDif > 0 && colDif < 0) || (rowDif < 0 && colDif > 0)) {
             int i = 1;
             if (rowDif < 0 && colDif > 0) {
@@ -60,4 +60,5 @@ public class Path {
         }
         return true;
     }
+
 }

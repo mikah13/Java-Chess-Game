@@ -1,5 +1,10 @@
+import java.io.Serializable;
 
-public class Player {
+public class Player implements Serializable{
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private ChessPieces cp;
     private int player;
 
@@ -19,5 +24,13 @@ public class Player {
 
     public int getPlayer() {
         return this.player;
+    }
+
+    public void undo() {
+        cp.undo();
+    }
+    
+    public void setPrevSet() {
+        cp.setPrevSet();
     }
 }
